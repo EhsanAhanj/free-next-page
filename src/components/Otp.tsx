@@ -4,7 +4,7 @@ import Script from "next/script";
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
-  const [code, setCode] = useState("ccc");
+  const [code, setCode] = useState("mmmm");
   // useEffect(() => {
   //   const ac = new AbortController();
   //   console.log(navigator.credentials);
