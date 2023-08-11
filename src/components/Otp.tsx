@@ -112,6 +112,8 @@ const Otp = () => {
           ac.abort();
         });
       }
+      console.log(navigator.credentials);
+
       (navigator.credentials as any)
         .get({
           otp: { transport: ["sms"] },
