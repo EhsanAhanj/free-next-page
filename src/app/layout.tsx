@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <script
+          type="text/javascript"
+          src="https://account.emofid.com/js/otp.js?v=dqWASLCeGVVNfABboOkMdYq2QPzkPqu7MFo2s41NVpw"
+        ></script>
+      </Head>
+
       <meta
         http-equiv="Permissions-Policy"
         content="interest-cohort=(), user-id=()"
