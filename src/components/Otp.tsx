@@ -16,7 +16,7 @@ const Otp = () => {
       console.log("in OTPCredentials");
 
       {
-        global?.window.addEventListener("DOMContentLoaded", function (e) {
+        global?.document.addEventListener("DOMContentLoaded", function (e) {
           console.log("IT IS LOAD??????????");
 
           console.log("WebOTP API is called");
