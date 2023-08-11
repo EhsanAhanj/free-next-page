@@ -1,0 +1,30 @@
+{
+    "css.validate": false,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "headwind.runOnSave": false,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "cSpell.words": [
+        "checkpayment",
+        "Fadak",
+        "Formik",
+        "Helphanlder",
+        "jalali",
+        "jalaliday",
+        "Kasr",
+        "Mobilehandler",
+        "Numberhandler",
+        "servicethree",
+        "Shabnam",
+        "STARTERCONF",
+        "tarrif",
+        "Toastify"
+    ],
+    "[typescriptreact]": {
+        // "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+}
