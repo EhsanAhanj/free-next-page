@@ -71,9 +71,11 @@ const Otp = () => {
     });
   }
   return (
-    <div className="flex text-4xl ">
-      <h1>Code: </h1>
-      <h1> {code} </h1>
+    <div className="flex text-4xl flex-col ">
+      <div className="flex w-full mb-3">
+        <h1>Code: </h1>
+        <h1> {code} </h1>
+      </div>
       <input type="text" autoComplete="one-time-code" inputMode="numeric" />
     </div>
   );
