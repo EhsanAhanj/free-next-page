@@ -23,7 +23,10 @@ export default function RootLayout({
       />
       <Script strategy="afterInteractive" id="otp">
         {`if ('OTPCredential' in window) {
-      window.addEventListener('DOMContentLoaded', e => {
+        console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
+     
+     window.addEventListener('DOMContentLoaded',function (e) {
+        console.log("ALAHO AKBARRRRRRRRRRRRRRR");
         const input = document.querySelector('input[autocomplete="one-time-code"]');
         if (!input) return;
         const ac = new AbortController();
