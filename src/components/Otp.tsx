@@ -42,7 +42,7 @@ const Otp = () => {
     global.window.addEventListener("DOMContentLoaded", (e) => {
       const input = global.document.querySelector(
         'input[autocomplete="one-time-code"]'
-      );
+      ) as HTMLInputElement;
       if (!input) return;
       // Set up an AbortController to use with the OTP request
       const ac = new AbortController();
@@ -54,18 +54,18 @@ const Otp = () => {
         });
       }
       // Request the OTP via get()
-      navigator.credentials
+      (navigator.credentials as any)
         .get({
           otp: { transport: ["sms"] },
           signal: ac.signal,
         })
-        .then((otp) => {
+        .then((otp: any) => {
           // When the OTP is received by the app client, enter it into the form
           // input and submit the form automatically
           input.value = otp.code;
           if (form) form.submit();
         })
-        .catch((err) => {
+        .catch((err: Error) => {
           console.error(err);
         });
     });
