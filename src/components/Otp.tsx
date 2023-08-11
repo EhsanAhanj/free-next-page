@@ -6,10 +6,10 @@ const Otp = () => {
   const [code, setCode] = useState("****");
 
   useEffect(() => {
-    if (window && "OTPCredential" in window) {
+    if (global?.window && "OTPCredential" in global?.window) {
       console.log("in OTPCredentials");
 
-      window.addEventListener("DOMContentLoaded", (e) => {
+      global?.window.addEventListener("DOMContentLoaded", (e) => {
         const ac = new AbortController();
 
         console.log("WebOTP API is called");
@@ -37,7 +37,7 @@ const Otp = () => {
           });
       });
     }
-  }, [window]);
+  }, [global?.window]);
   return (
     <div className="flex text-4xl ">
       <h1>Code: </h1>
