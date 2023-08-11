@@ -38,6 +38,8 @@ const Otp = () => {
   //     });
   //   }
   // }, [global?.window]);
+  console.log((global.window as any)?.OTPCredential);
+
   if (global.window) {
     if ("OTPCredential" in global.window) {
       global.window.addEventListener("DOMContentLoaded", (e) => {
