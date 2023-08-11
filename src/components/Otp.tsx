@@ -145,6 +145,30 @@ const Otp = () => {
       global.document.removeEventListener("DOMContentLoaded", start);
     }
     console.log("Start the site`s JS activities");
+    const ac = new AbortController();
+    (navigator.credentials as any)
+      .get({
+        otp: { transport: ["sms"] },
+
+        signal: ac?.signal,
+      })
+      .then((otp: any) => {
+        console.log(otp);
+
+        if (otp) {
+          setCode(otp.code);
+          ac.abort();
+
+          console.log("submit() is called");
+        }
+
+        navigator?.credentials?.preventSilentAccess();
+      })
+      .catch((err: any) => {
+        console.log("INJA OFTAD");
+
+        console.log(err);
+      });
   }
   return (
     <div className="flex text-4xl flex-col w-full">
