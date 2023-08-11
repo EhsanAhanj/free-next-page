@@ -15,7 +15,7 @@ const Otp = () => {
     if (global?.window && "OTPCredential" in global?.window) {
       console.log("in OTPCredentials");
 
-      global?.window.addEventListener("DOMContentLoaded", (e) => {
+      global?.window.addEventListener("DOMContentLoaded", function (e) {
         console.log("IT IS LOAD??????????");
 
         console.log("WebOTP API is called");
@@ -89,13 +89,18 @@ const Otp = () => {
   //   }
   // }
   return (
-    <div className="flex text-4xl flex-col  ">
+    <div className="flex text-4xl flex-col  max-w-screen-sm ">
       <div className="flex w-full mb-3 px-5">
         <h1>Code: </h1>
         <h1> {code} </h1>
       </div>
-      <form>
-        <input autoComplete="one-time-code" required />
+      <form className="w-full px-2">
+        <input
+          autoComplete="one-time-code"
+          type="text"
+          inputMode="numeric"
+          pattern="\d{6}"
+        />
         <input type="submit" />
       </form>
     </div>
