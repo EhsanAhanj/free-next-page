@@ -15,33 +15,35 @@ const Otp = () => {
     if (global?.window && "OTPCredential" in global?.window) {
       console.log("in OTPCredentials");
 
-      global?.window.addEventListener("DOMContentLoaded", function (e) {
-        console.log("IT IS LOAD??????????");
+      {
+        global?.window.addEventListener("DOMContentLoaded", function (e) {
+          console.log("IT IS LOAD??????????");
 
-        console.log("WebOTP API is called");
+          console.log("WebOTP API is called");
 
-        (navigator.credentials as any)
-          .get({
-            otp: { transport: ["sms"] },
+          (navigator.credentials as any)
+            .get({
+              otp: { transport: ["sms"] },
 
-            signal: ac?.signal,
-          })
-          .then((otp: any) => {
-            console.log(otp);
+              signal: ac?.signal,
+            })
+            .then((otp: any) => {
+              console.log(otp);
 
-            if (otp) {
-              setCode(otp.code);
-              ac.abort();
+              if (otp) {
+                setCode(otp.code);
+                ac.abort();
 
-              console.log("submit() is called");
-            }
+                console.log("submit() is called");
+              }
 
-            navigator?.credentials?.preventSilentAccess();
-          })
-          .catch((err: any) => {
-            console.log(err);
-          });
-      });
+              navigator?.credentials?.preventSilentAccess();
+            })
+            .catch((err: any) => {
+              console.log(err);
+            });
+        });
+      }
     }
   }, [global?.window]);
   console.log((global.window as any)?.OTPCredential);
