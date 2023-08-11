@@ -98,37 +98,35 @@ const Otp = () => {
     if ("OTPCredential" in window) {
       console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
 
-      document.addEventListener("DOMContentLoaded", function (e) {
-        console.log("ALAHO AKBARRRRRRRRRRRRRRR");
-        const input = document.querySelector(
-          'input[autocomplete="one-time-code"]'
-        ) as HTMLInputElement;
-        console.log("1", input);
-        if (!input) return;
+      console.log("ALAHO AKBARRRRRRRRRRRRRRR");
+      const input = document.querySelector(
+        'input[autocomplete="one-time-code"]'
+      ) as HTMLInputElement;
+      console.log("1", input);
+      if (!input) return;
 
-        const ac = new AbortController();
-        const form = input.closest("form");
-        if (form) {
-          form.addEventListener("submit", (e) => {
-            ac.abort();
-          });
-        }
-        (navigator.credentials as any)
-          .get({
-            otp: { transport: ["sms"] },
-            signal: ac.signal,
-          })
-          .then((otp: any) => {
-            console.log("OTP", otp);
-            input.value = otp.code;
-            if (form) form.submit();
-          })
-          .catch((err: any) => {
-            console.log("AZZZZZZZZ ERRRPR");
+      const ac = new AbortController();
+      const form = input.closest("form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          ac.abort();
+        });
+      }
+      (navigator.credentials as any)
+        .get({
+          otp: { transport: ["sms"] },
+          signal: ac.signal,
+        })
+        .then((otp: any) => {
+          console.log("OTP", otp);
+          input.value = otp.code;
+          if (form) form.submit();
+        })
+        .catch((err: any) => {
+          console.log("AZZZZZZZZ ERRRPR");
 
-            console.log(err);
-          });
-      });
+          console.log(err);
+        });
     }
   }
   if (global.document && global.document.readyState !== "loading") {
