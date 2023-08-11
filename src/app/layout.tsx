@@ -21,38 +21,6 @@ export default function RootLayout({
         http-equiv="Permissions-Policy"
         content="interest-cohort=(), user-id=()"
       />
-      <Script strategy="afterInteractive" id="otp">
-        {`if ('OTPCredential' in window) {
-        console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
-     
-     window.addEventListener('DOMContentLoaded',function (e) {
-        console.log("ALAHO AKBARRRRRRRRRRRRRRR");
-        const input = document.querySelector('input[autocomplete="one-time-code"]');
-        if (!input) return;
-        console.log("1",input);
-        
-        const ac = new AbortController();
-        const form = input.closest('form');
-        if (form) {
-          form.addEventListener('submit', e => {
-            ac.abort();
-          });
-        }
-        navigator.credentials.get({
-          otp: { transport:['sms'] },
-          signal: ac.signal
-        }).then(otp => {
-          console.log("OTP",otp)
-          input.value = otp.code;
-          if (form) form.submit();
-        }).catch(err => {
-          console.log("AZZZZZZZZ ERRRPR");
-
-          console.log(err);
-        });
-      });
-    }`}
-      </Script>
 
       <body className={inter.className}>{children}</body>
     </html>
