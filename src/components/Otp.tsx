@@ -94,7 +94,7 @@ const Otp = () => {
   //   }
   // }
 
-  useEffect(() => {
+  function otpCode() {
     if ("OTPCredential" in window) {
       console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
 
@@ -130,59 +130,20 @@ const Otp = () => {
           });
       });
     }
-  }, []);
-  // var dclhandler = false;
-  // if (global.document) {
-  //   if (global.document.readyState !== "loading") {
-  //     start();
-  //   } else {
-  //     dclhandler = true;
-  //     global.document.addEventListener("DOMContentLoaded", start);
-  //   }
-  // }
-  // function start() {
-  //   if (global.document && dclhandler) {
-  //     global.document.removeEventListener("DOMContentLoaded", start);
-  //   }
-  //   console.log("Start the site`s JS activities");
-  //   const ac = new AbortController();
-  //   (navigator.credentials as any)
-  //     .get({
-  //       otp: { transport: ["sms"] },
+  }
+  if (global.document && global.document.readyState !== "loading") {
+    console.log("global.document is already ready, just execute code here");
+    otpCode();
+  } else {
+    global.document &&
+      global.document.addEventListener("DOMContentLoaded", function () {
+        console.log("document was not ready, place code here");
+        otpCode();
+      });
+  }
 
-  //       signal: ac?.signal,
-  //     })
-  //     .then((otp: any) => {
-  //       console.log(otp);
-
-  //       if (otp) {
-  //         setCode(otp.code);
-  //         ac.abort();
-
-  //         console.log("submit() is called");
-  //       }
-
-  //       navigator?.credentials?.preventSilentAccess();
-  //     })
-  //     .catch((err: any) => {
-  //       console.log("INJA OFTAD");
-
-  //       console.log(err);
-  //     });
-  // }
   return (
     <div className="flex text-4xl flex-col w-full">
-      <Script id="flan" strategy="afterInteractive">
-        {`var inCloudFlare = true;
-window.addEventListener("DOMContentLoaded", function () {
-    inCloudFlare = false;
-});
-if (document.readyState === "loading") {
-    window.addEventListener("load", function () {
-        if (inCloudFlare) window.dispatchEvent(new Event("DOMContentLoaded"));
-    });
-}`}
-      </Script>
       <div className="flex w-full mb-3 px-5">
         <h1>Code: </h1>
         <h1> {code} </h1>
