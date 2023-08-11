@@ -93,40 +93,61 @@ const Otp = () => {
   //     });
   //   }
   // }
+
+  // useEffect(() => {
+  //   if ("OTPCredential" in window) {
+  //     console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
+
+  //     document.addEventListener("DOMContentLoaded", function (e) {
+  //       console.log("ALAHO AKBARRRRRRRRRRRRRRR");
+  //       const input = document.querySelector(
+  //         'input[autocomplete="one-time-code"]'
+  //       );
+  //       console.log("1", input);
+  //       if (!input) return;
+
+  //       const ac = new AbortController();
+  //       const form = input.closest("form");
+  //       if (form) {
+  //         form.addEventListener("submit", (e) => {
+  //           ac.abort();
+  //         });
+  //       }
+  //       navigator.credentials
+  //         .get({
+  //           otp: { transport: ["sms"] },
+  //           signal: ac.signal,
+  //         })
+  //         .then((otp) => {
+  //           console.log("OTP", otp);
+  //           input.value = otp.code;
+  //           if (form) form.submit();
+  //         })
+  //         .catch((err) => {
+  //           console.log("AZZZZZZZZ ERRRPR");
+
+  //           console.log(err);
+  //         });
+  //     });
+  //   }
+  // }, []);
+  var dclhandler = false;
+  if (document) {
+    if (document.readyState !== "loading") {
+      start();
+    } else {
+      dclhandler = true;
+      document.addEventListener("DOMContentLoaded", start);
+    }
+  }
+  function start() {
+    if (document && dclhandler) {
+      document.removeEventListener("DOMContentLoaded", start);
+    }
+    console.log("Start the site`s JS activities");
+  }
   return (
     <div className="flex text-4xl flex-col w-full">
-      <Script strategy="afterInteractive" id="otp">
-        {`if ('OTPCredential' in window) {
-        console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
-     
-     window.addEventListener('DOMContentLoaded',function (e) {
-        console.log("ALAHO AKBARRRRRRRRRRRRRRR");
-        const input = document.querySelector('input[autocomplete="one-time-code"]');
-        if (!input) return;
-        console.log("1",input);
-        
-        const ac = new AbortController();
-        const form = input.closest('form');
-        if (form) {
-          form.addEventListener('submit', e => {
-            ac.abort();
-          });
-        }
-        navigator.credentials.get({
-          otp: { transport:['sms'] },
-          signal: ac.signal
-        }).then(otp => {
-          console.log("OTP",otp)
-          input.value = otp.code;
-          if (form) form.submit();
-        }).catch(err => {
-          console.log("AZZZZZZZZ ERRRPR");
-
-          console.log(err);
-        });
-      });
-    }`}
-      </Script>
       <div className="flex w-full mb-3 px-5">
         <h1>Code: </h1>
         <h1> {code} </h1>
