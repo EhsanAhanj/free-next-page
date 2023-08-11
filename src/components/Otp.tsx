@@ -132,17 +132,17 @@ const Otp = () => {
   //   }
   // }, []);
   var dclhandler = false;
-  if (document) {
-    if (document.readyState !== "loading") {
+  if (global.document) {
+    if (global.document.readyState !== "loading") {
       start();
     } else {
       dclhandler = true;
-      document.addEventListener("DOMContentLoaded", start);
+      global.document.addEventListener("DOMContentLoaded", start);
     }
   }
   function start() {
-    if (document && dclhandler) {
-      document.removeEventListener("DOMContentLoaded", start);
+    if (global.document && dclhandler) {
+      global.document.removeEventListener("DOMContentLoaded", start);
     }
     console.log("Start the site`s JS activities");
   }
