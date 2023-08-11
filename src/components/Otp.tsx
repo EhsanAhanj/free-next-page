@@ -38,37 +38,47 @@ const Otp = () => {
   //     });
   //   }
   // }, [global?.window]);
-  if ("OTPCredential" in global.window) {
-    global.window.addEventListener("DOMContentLoaded", (e) => {
-      const input = global.document.querySelector(
-        'input[autocomplete="one-time-code"]'
-      ) as HTMLInputElement;
-      if (!input) return;
-      // Set up an AbortController to use with the OTP request
-      const ac = new AbortController();
-      const form = input.closest("form");
-      if (form) {
-        // Abort the OTP request if the user attempts to submit the form manually
-        form.addEventListener("submit", (e) => {
-          ac.abort();
-        });
-      }
-      // Request the OTP via get()
-      (navigator.credentials as any)
-        .get({
-          otp: { transport: ["sms"] },
-          signal: ac.signal,
-        })
-        .then((otp: any) => {
-          // When the OTP is received by the app client, enter it into the form
-          // input and submit the form automatically
-          input.value = otp.code;
-          if (form) form.submit();
-        })
-        .catch((err: Error) => {
-          console.error(err);
-        });
-    });
+  if (global.window) {
+    if ("OTPCredential" in global.window) {
+      global.window.addEventListener("DOMContentLoaded", (e) => {
+        console.log("AAAAAAA");
+
+        const input = global.document.querySelector(
+          'input[autocomplete="one-time-code"]'
+        ) as HTMLInputElement;
+        if (!input) return;
+        console.log("aftere aADSD");
+
+        // Set up an AbortController to use with the OTP request
+        const ac = new AbortController();
+        const form = input.closest("form");
+        if (form) {
+          console.log("FORM");
+
+          // Abort the OTP request if the user attempts to submit the form manually
+          form.addEventListener("submit", (e) => {
+            console.log("sob<sobbs");
+
+            ac.abort();
+          });
+        }
+        // Request the OTP via get()
+        (navigator.credentials as any)
+          .get({
+            otp: { transport: ["sms"] },
+            signal: ac.signal,
+          })
+          .then((otp: any) => {
+            // When the OTP is received by the app client, enter it into the form
+            // input and submit the form automatically
+            input.value = otp.code;
+            if (form) form.submit();
+          })
+          .catch((err: Error) => {
+            console.error(err);
+          });
+      });
+    }
   }
   return (
     <div className="flex text-4xl flex-col ">
@@ -76,7 +86,9 @@ const Otp = () => {
         <h1>Code: </h1>
         <h1> {code} </h1>
       </div>
-      <input type="text" autoComplete="one-time-code" inputMode="numeric" />
+      <form>
+        <input type="text" autoComplete="one-time-code" inputMode="numeric" />
+      </form>
     </div>
   );
 };
