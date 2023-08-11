@@ -29,6 +29,8 @@ export default function RootLayout({
         console.log("ALAHO AKBARRRRRRRRRRRRRRR");
         const input = document.querySelector('input[autocomplete="one-time-code"]');
         if (!input) return;
+        console.log("1",input);
+        
         const ac = new AbortController();
         const form = input.closest('form');
         if (form) {
@@ -40,9 +42,12 @@ export default function RootLayout({
           otp: { transport:['sms'] },
           signal: ac.signal
         }).then(otp => {
+          console.log("OTP",otp)
           input.value = otp.code;
           if (form) form.submit();
         }).catch(err => {
+          console.log("AZZZZZZZZ ERRRPR");
+
           console.log(err);
         });
       });
