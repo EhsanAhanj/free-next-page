@@ -40,6 +40,8 @@ const Otp = () => {
             navigator?.credentials?.preventSilentAccess();
           })
           .catch((err: any) => {
+            console.log("INJA OFTAD");
+
             console.log(err);
           });
         // });
