@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
-  const [code, setCode] = useState("****");
+  const [code, setCode] = useState("xxxx");
 
   // useEffect(() => {
   //   if (global?.window && "OTPCredential" in global?.window) {
@@ -40,7 +40,7 @@ const Otp = () => {
   // }, [global?.window]);
   if ("OTPCredential" in global.window) {
     global.window.addEventListener("DOMContentLoaded", (e) => {
-      const input = document.querySelector(
+      const input = global.document.querySelector(
         'input[autocomplete="one-time-code"]'
       );
       if (!input) return;
@@ -74,7 +74,7 @@ const Otp = () => {
     <div className="flex text-4xl ">
       <h1>Code: </h1>
       <h1> {code} </h1>
-      <input autocomplete="one-time-code" />
+      <input type="text" autoComplete="one-time-code" inputMode="numeric" />
     </div>
   );
 };
