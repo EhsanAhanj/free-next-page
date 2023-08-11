@@ -5,13 +5,18 @@ import React, { useEffect, useState } from "react";
 const Otp = () => {
   const [code, setCode] = useState("bbbb");
   useEffect(() => {
+    const ac = new AbortController();
+    console.log(navigator.credentials);
+
+    (navigator.credentials as any).get({
+      otp: { transport: ["sms"] },
+      signal: ac.signal,
+    });
     if (global?.window && "OTPCredential" in global?.window) {
       console.log("in OTPCredentials");
 
       global?.window.addEventListener("DOMContentLoaded", (e) => {
         console.log("IT IS LOAD??????????");
-
-        const ac = new AbortController();
 
         console.log("WebOTP API is called");
 
