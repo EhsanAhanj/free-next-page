@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
-  const [code, setCode] = useState("xxxx");
-
+  const [code, setCode] = useState("bbbb");
   useEffect(() => {
     if (global?.window && "OTPCredential" in global?.window) {
       console.log("in OTPCredentials");
 
       global?.window.addEventListener("DOMContentLoaded", (e) => {
+        console.log("IT IS LOAD??????????");
+
         const ac = new AbortController();
 
         console.log("WebOTP API is called");
@@ -89,7 +90,8 @@ const Otp = () => {
         <h1> {code} </h1>
       </div>
       <form>
-        <input type="text" autoComplete="one-time-code" inputMode="numeric" />
+        <input autoComplete="one-time-code" required />
+        <input type="submit" />
       </form>
     </div>
   );
