@@ -94,54 +94,6 @@ const Otp = () => {
   //   }
   // }
 
-  function otpCode() {
-    if ("OTPCredential" in window) {
-      console.log("ALAHO AKBARRRRRRRRRRRRRRR11111111111111");
-
-      console.log("ALAHO AKBARRRRRRRRRRRRRRR");
-      const input = document.querySelector(
-        'input[autocomplete="one-time-code"]'
-      ) as HTMLInputElement;
-      console.log("1", input);
-      if (!input) return;
-
-      const ac = new AbortController();
-      const form = input.closest("form");
-      if (form) {
-        form.addEventListener("submit", (e) => {
-          ac.abort();
-        });
-      }
-      console.log(navigator.credentials);
-
-      (navigator.credentials as any)
-        .get({
-          otp: { transport: ["sms"] },
-          signal: ac.signal,
-        })
-        .then((otp: any) => {
-          console.log("OTP", otp);
-          input.value = otp.code;
-          if (form) form.submit();
-        })
-        .catch((err: any) => {
-          console.log("AZZZZZZZZ ERRRPR");
-
-          console.log(err);
-        });
-    }
-  }
-  if (global.document && global.document.readyState !== "loading") {
-    console.log("global.document is already ready, just execute code here");
-    otpCode();
-  } else {
-    global.document &&
-      global.document.addEventListener("DOMContentLoaded", function () {
-        console.log("document was not ready, place code here");
-        otpCode();
-      });
-  }
-
   return (
     <div className="flex text-4xl flex-col w-full">
       <div className="flex w-full mb-3 px-5">
