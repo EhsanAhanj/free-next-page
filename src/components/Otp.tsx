@@ -50,6 +50,7 @@ const Otp = () => {
   //   }
   // }, []);
   // console.log((global.window as any)?.OTPCredential);
+  console.log("Preeeeeeeeeeeeee aaaaaaaaaaaaaaaaaa");
 
   if (global.window && (global.window as any)?.OTPCredential) {
     global.window.addEventListener("DOMContentLoaded", (e) => {
