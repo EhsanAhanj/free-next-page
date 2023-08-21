@@ -4,7 +4,7 @@ import Script from "next/script";
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
-  const [code, setCode] = useState("mmmm");
+  const [code, setCode] = useState("cccc");
   // useEffect(() => {
   //   const ac = new AbortController();
   //   console.log(navigator.credentials);
@@ -50,46 +50,47 @@ const Otp = () => {
   //   }
   // }, []);
   // console.log((global.window as any)?.OTPCredential);
-  console.log("Preeeeeeeeeeeeee aaaaaaaaaaaaaaaaaa2222222222");
 
-  if (global.window) {
-    console.log("TRIGREDDDDDDDDDDDD");
+  // global.window.addEventListener("DOMContentLoaded", (e) => {
+  //   console.log("AAAAAAAAAAAAA", e);
 
-    global.window.document.dispatchEvent(
-      new Event("DOMContentLoaded", {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
-    // global.window.addEventListener("DOMContentLoaded", (e) => {
-    //   console.log("AAAAAAAAAAAAA", e);
+  //   const input = document.querySelector(
+  //     'input[name="OTP-input"]'
+  //   ) as HTMLInputElement;
+  //   console.log("AAAAAAAAAAA", input);
+  //   if (!input) return;
+  //   const ac = new AbortController();
+  //   const form = input.closest("form#primary_form");
+  //   if (form) {
+  //     form.addEventListener("submit", (e) => {
+  //       ac.abort();
+  //     });
+  //   }
+  //   (navigator.credentials as any)
+  //     .get({
+  //       otp: { transport: ["sms"] },
+  //       signal: ac.signal,
+  //     })
+  //     .then((otp: any) => {
+  //       input.value = otp.code;
+  //       // submitForm();
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     });
+  // });
+  useEffect(() => {
+    if (global.window) {
+      console.log("TRIGREDDDDDDDDDDDD");
 
-    //   const input = document.querySelector(
-    //     'input[name="OTP-input"]'
-    //   ) as HTMLInputElement;
-    //   console.log("AAAAAAAAAAA", input);
-    //   if (!input) return;
-    //   const ac = new AbortController();
-    //   const form = input.closest("form#primary_form");
-    //   if (form) {
-    //     form.addEventListener("submit", (e) => {
-    //       ac.abort();
-    //     });
-    //   }
-    //   (navigator.credentials as any)
-    //     .get({
-    //       otp: { transport: ["sms"] },
-    //       signal: ac.signal,
-    //     })
-    //     .then((otp: any) => {
-    //       input.value = otp.code;
-    //       // submitForm();
-    //     })
-    //     .catch((err: any) => {
-    //       console.log(err);
-    //     });
-    // });
-  }
+      global.window.document.dispatchEvent(
+        new Event("DOMContentLoaded", {
+          bubbles: true,
+          cancelable: true,
+        })
+      );
+    }
+  }, [code]);
 
   return (
     <div className="flex text-4xl flex-col w-full">
