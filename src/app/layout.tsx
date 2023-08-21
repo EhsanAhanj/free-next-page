@@ -25,7 +25,7 @@ export default function RootLayout({
           content="interest-cohort=(), user-id=()"
         />
       </Head>
-      <Script type="text/javascript" src="/public/otp.js" />
+      <Script type="text/javascript" src="otp.js" />
       <body className={inter.className}>{children}</body>
     </html>
   );
