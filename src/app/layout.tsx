@@ -18,7 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script src="/js/otp.js" strategy="lazyOnload" />
       <body className={inter.className}>{children}</body>
     </html>
   );
