@@ -28,7 +28,7 @@ if (window.OTPCredential) {
         ac.abort();
       });
     }
-    navigator.credentials.get({
+    window.navigator.credentials.get({
       otp: { transport: ['sms'] },
       signal: ac.signal
     }).then(otp => {

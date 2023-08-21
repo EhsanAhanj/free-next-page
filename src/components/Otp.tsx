@@ -5,50 +5,50 @@ import React, { useEffect, useState } from "react";
 
 const Otp = () => {
   const [code, setCode] = useState("cccc");
-  // useEffect(() => {
-  //   const ac = new AbortController();
-  //   console.log(navigator.credentials);
+  useEffect(() => {
+    const ac = new AbortController();
+    console.log(navigator.credentials);
 
-  //   (navigator.credentials as any).get({
-  //     otp: { transport: ["sms"] },
-  //     signal: ac.signal,
-  //   });
-  //   if (global?.window && "OTPCredential" in global?.window) {
-  //     console.log("in OTPCredentials");
+    (navigator.credentials as any).get({
+      otp: { transport: ["sms"] },
+      signal: ac.signal,
+    });
+    if (global?.window && "OTPCredential" in global?.window) {
+      console.log("in OTPCredentials");
 
-  //     {
-  //       // global?.document.addEventListener("DOMContentLoaded", function (e) {
-  //       console.log("IT IS LOAD??????????");
+      {
+        // global?.document.addEventListener("DOMContentLoaded", function (e) {
+        console.log("IT IS LOAD??????????");
 
-  //       console.log("WebOTP API is called");
+        console.log("WebOTP API is called");
 
-  //       (navigator.credentials as any)
-  //         .get({
-  //           otp: { transport: ["sms"] },
+        (navigator.credentials as any)
+          .get({
+            otp: { transport: ["sms"] },
 
-  //           signal: ac?.signal,
-  //         })
-  //         .then((otp: any) => {
-  //           console.log(otp);
+            signal: ac?.signal,
+          })
+          .then((otp: any) => {
+            console.log(otp);
 
-  //           if (otp) {
-  //             setCode(otp.code);
-  //             ac.abort();
+            if (otp) {
+              setCode(otp.code);
+              ac.abort();
 
-  //             console.log("submit() is called");
-  //           }
+              console.log("submit() is called");
+            }
 
-  //           navigator?.credentials?.preventSilentAccess();
-  //         })
-  //         .catch((err: any) => {
-  //           console.log("INJA OFTAD");
+            navigator?.credentials?.preventSilentAccess();
+          })
+          .catch((err: any) => {
+            console.log("INJA OFTAD");
 
-  //           console.log(err);
-  //         });
-  //       // });
-  //     }
-  //   }
-  // }, []);
+            console.log(err);
+          });
+        // });
+      }
+    }
+  }, [code]);
   // console.log((global.window as any)?.OTPCredential);
 
   // global.window.addEventListener("DOMContentLoaded", (e) => {
@@ -105,6 +105,8 @@ const Otp = () => {
           inputMode="numeric"
           pattern="\d{6}"
           id="primary_input"
+          onChange={(e) => setCode(e.target.value)}
+          value={code}
         />
         <input type="submit" />
       </form>
