@@ -53,6 +53,8 @@ const Otp = () => {
 
   if (global.window && (global.window as any)?.OTPCredential) {
     global.window.addEventListener("DOMContentLoaded", (e) => {
+      console.log("AAAAAAAAAAAAA", e);
+
       const input = document.querySelector(
         'input[name="OTP-input"]'
       ) as HTMLInputElement;
