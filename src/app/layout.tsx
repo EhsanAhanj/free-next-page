@@ -19,7 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script type="text/javascript" src="/js/otp.js" />
+      <Head>
+        <meta
+          http-equiv="Permissions-Policy"
+          content="interest-cohort=(), user-id=()"
+        />
+      </Head>
+      <Script type="text/javascript" src="/public/otp.js" />
       <body className={inter.className}>{children}</body>
     </html>
   );
