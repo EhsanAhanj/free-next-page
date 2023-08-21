@@ -12,9 +12,12 @@ function submitForm() {
 }
 
 
-console.log("Aaaaaaaaaaaaaaaaaaammmm");
+console.log("Aaaaaaaaaaaaaaaaaaammmm", window);
+console.log("Aaaaaaaaaaaaaaaaaaammmm", window.OTPCredential);
 if (window.OTPCredential) {
   window.addEventListener('DOMContentLoaded', e => {
+    console.log("ZZZZZZZZZZZZZZZZZZZ", e);
+
     const input = document.querySelector('input[name="OTP-input"]');
     console.log("AAAAAAAAAAA", input);
     if (!input) return;
