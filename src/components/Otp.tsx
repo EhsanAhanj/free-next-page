@@ -79,18 +79,6 @@ const Otp = () => {
   //       console.log(err);
   //     });
   // });
-  useEffect(() => {
-    if (global.window) {
-      console.log("TRIGREDDDDDDDDDDDD");
-
-      global.window.document.dispatchEvent(
-        new Event("DOMContentLoaded", {
-          bubbles: true,
-          cancelable: true,
-        })
-      );
-    }
-  }, [code]);
 
   return (
     <div className="flex text-4xl flex-col w-full">
