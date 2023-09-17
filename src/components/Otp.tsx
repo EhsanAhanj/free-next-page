@@ -1,7 +1,9 @@
+"use client"; // This is a client component 👈🏽
+
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
-  const [code, setCode] = useState("vvvvvv");
+  const [code, setCode] = useState("mmmm");
   useEffect(() => {
     const ac = new AbortController();
     console.log(navigator.credentials, "1");
