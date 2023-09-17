@@ -3,38 +3,38 @@
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
-  const [code, setCode] = useState("mmmm");
-  useEffect(() => {
-    const ac = new AbortController();
-    console.log(navigator.credentials, "1");
+  const [code, setCode] = useState("vvvvvv");
+  const ac = new AbortController();
+  console.log(navigator.credentials, "1");
 
-    navigator?.credentials &&
-      (navigator.credentials as any)
-        .get({
-          otp: { transport: ["sms"] },
+  navigator?.credentials &&
+    (navigator.credentials as any)
+      .get({
+        otp: { transport: ["sms"] },
 
-          signal: ac?.signal,
-        })
-        .then((otp: any) => {
-          console.log(otp);
-          if (otp) {
-            console.log("RESIIIIIIIIIIIIIIIIFFFFFFFFFFFFFFFFFFFFFF");
+        signal: ac?.signal,
+      })
+      .then((otp: any) => {
+        console.log(otp);
+        if (otp) {
+          console.log("RESIIIIIIIIIIIIIIIIFFFFFFFFFFFFFFFFFFFFFF");
 
-            // helper.setValue(otp?.code, true);
-            // helper.setTouched(true);
-            // submitForm();
-            ac.abort();
-
-            console.log("submit() is called");
-          }
-
-          // navigator?.credentials?.preventSilentAccess();
-        })
-        .catch((err: any) => {
+          // helper.setValue(otp?.code, true);
+          // helper.setTouched(true);
+          // submitForm();
           ac.abort();
-          console.log(err);
-        });
 
+          console.log("submit() is called");
+        }
+
+        // navigator?.credentials?.preventSilentAccess();
+      })
+      .catch((err: any) => {
+        ac.abort();
+        console.log(err);
+      });
+
+  useEffect(() => {
     // return () => {
     //     console.log('otp aborting');
     //     navigator?.credentials?.preventSilentAccess();
