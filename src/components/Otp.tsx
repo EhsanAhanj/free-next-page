@@ -1,6 +1,3 @@
-"use client"; // This is a client component 👈🏽
-
-import Script from "next/script";
 import React, { useEffect, useState } from "react";
 
 const Otp = () => {
