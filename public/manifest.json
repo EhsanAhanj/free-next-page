@@ -1,7 +1,7 @@
 {
-  "name": "Saba Application",
-  "short_name": "Saba App",
-  "description": "Saba Application Messenger",
+  "name": "Saba2  Application",
+  "short_name": "Saba2 App",
+  "description": "Saba2 Application Messenger",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",

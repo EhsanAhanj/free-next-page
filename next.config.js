@@ -3,10 +3,11 @@ const withPWA = require("next-pwa")({
   dest: "public",
   register: true,
   scope: "/app",
+  disable: process.env.NODE_ENV === "development",
 });
 
 const nextConfig = withPWA({
-  output: "export",
+  output: "standalone",
 });
 
 module.exports = nextConfig;
