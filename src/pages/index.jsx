@@ -19,31 +19,31 @@ const Index = () => {
   const [subscription, setSubscription] = useState(null);
   const [registration, setRegistration] = useState(null);
 
-  useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      "serviceWorker" in navigator &&
-      window.workbox !== undefined
-    ) {
-      // run only in browser
-      console.log(navigator.serviceWorker);
-      navigator.serviceWorker.ready.then((reg) => {
-        reg.pushManager.getSubscription().then((sub) => {
-          if (
-            sub &&
-            !(
-              sub.expirationTime &&
-              Date.now() > sub.expirationTime - 5 * 60 * 1000
-            )
-          ) {
-            setSubscription(sub);
-            setIsSubscribed(true);
-          }
-        });
-        setRegistration(reg);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     typeof window !== "undefined" &&
+  //     "serviceWorker" in navigator &&
+  //     window.workbox !== undefined
+  //   ) {
+  //     // run only in browser
+  //     console.log(navigator.serviceWorker);
+  //     navigator.serviceWorker.ready.then((reg) => {
+  //       reg.pushManager.getSubscription().then((sub) => {
+  //         if (
+  //           sub &&
+  //           !(
+  //             sub.expirationTime &&
+  //             Date.now() > sub.expirationTime - 5 * 60 * 1000
+  //           )
+  //         ) {
+  //           setSubscription(sub);
+  //           setIsSubscribed(true);
+  //         }
+  //       });
+  //       setRegistration(reg);
+  //     });
+  //   }
+  // }, []);
 
   const subscribeButtonOnClick = async (event) => {
     event.preventDefault();
