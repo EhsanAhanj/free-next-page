@@ -1,1 +1,0 @@
-(()=>{"use strict";var e=[,e=>{e.exports=()=>{console.log("Hello from util."),console.log("es6+ syntax test:");let e={message:"working"};console.log(null==e?void 0:e.message)}}],o={};function s(t){var r=o[t];if(void 0!==r)return r.exports;var l=o[t]={exports:{}};return e[t](l,l.exports,s),l.exports}s(1)(),self.addEventListener("message",(e=>{console.log(e.data)}))})();
