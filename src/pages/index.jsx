@@ -56,7 +56,7 @@ const Index = () => {
     // TODO: you should call your API to save subscription data on server in order to send web push notification from server
     setSubscription(sub);
     setIsSubscribed(true);
-
+    console.log(subscription);
     console.log("web push subscribed!");
     console.log(sub);
   };
