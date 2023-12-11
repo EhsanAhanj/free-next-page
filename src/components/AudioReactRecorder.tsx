@@ -1,6 +1,11 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, memo } from "react";
 import PropTypes from "prop-types";
-
+declare global {
+  interface Window {
+    webkitAudioContext: any;
+    stream: any;
+  }
+}
 export const RecordState = Object.freeze({
   START: "start",
   PAUSE: "pause",
@@ -10,7 +15,7 @@ export const RecordState = Object.freeze({
 
 interface AudioReactRecorderProps {
   state?: string;
-  type: string;
+  type?: string;
   backgroundColor?: string;
   foregroundColor?: string;
   canvasWidth?: string | number;
@@ -20,7 +25,7 @@ interface AudioReactRecorderProps {
 
 const AudioReactRecorder: React.FC<AudioReactRecorderProps> = ({
   state = RecordState.NONE,
-  type,
+  type = "audio/wav",
   backgroundColor = "rgb(200, 200, 200)",
   foregroundColor = "rgb(0, 0, 0)",
   canvasWidth = 500,
@@ -319,4 +324,4 @@ AudioReactRecorder.propTypes = {
   onStop: PropTypes.func,
 };
 
-export default AudioReactRecorder;
+export default memo(AudioReactRecorder, (a, b) => a.state == b.state);
