@@ -6,7 +6,7 @@ const Recorder = () => {
 
   return (
     <div>
-      <h1>React Media Recorder</h1>
+      <h1>React Media Recorder22</h1>
       <div className="button-flex"></div>
       <div>
         <AudioRecorder />
