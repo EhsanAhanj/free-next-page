@@ -1,7 +1,7 @@
 import AudioReactRecorder, {
   RecordState,
 } from "@/components/AudioReactRecorder2";
-import SwipeSelect from "@/components/DatePicker";
+// import SwipeSelect from "@/components/DatePicker";
 import { useState } from "react";
 
 const App = () => {
