@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
 const AudioRecorder = () => {
   const [permission, setPermission] = useState(false);
-  const [stream, setStream] = useState();
+  const [stream, setStream] = useState<MediaStream>();
   const mimeType = "audio/webm";
-  const mediaRecorder = useRef(null);
+  const mediaRecorder = useRef<any>(null);
   const [recordingStatus, setRecordingStatus] = useState("inactive");
   const [audioChunks, setAudioChunks] = useState([]);
   const [audio, setAudio] = useState(null);
@@ -16,8 +16,8 @@ const AudioRecorder = () => {
         });
         setPermission(true);
         setStream(streamData);
-      } catch (err) {
-        alert(err.message);
+      } catch (err: any) {
+        alert(err?.message);
       }
     } else {
       alert("The MediaRecorder API is not supported in your browser.");
@@ -26,18 +26,18 @@ const AudioRecorder = () => {
   const startRecording = async () => {
     setRecordingStatus("recording");
     //create new Media recorder instance using the stream
-    const media = new MediaRecorder(stream, { mimeType });
+    const media = new MediaRecorder(stream!, { mimeType });
     //set the MediaRecorder instance to the mediaRecorder ref
     mediaRecorder.current = media;
     //invokes the start method to start the recording process
     mediaRecorder.current.start();
-    let localAudioChunks = [];
-    mediaRecorder.current.ondataavailable = (event) => {
+    let localAudioChunks: any[] = [];
+    mediaRecorder.current.ondataavailable = (event: any) => {
       if (typeof event.data === "undefined") return;
       if (event.data.size === 0) return;
       localAudioChunks.push(event.data);
     };
-    setAudioChunks(localAudioChunks);
+    setAudioChunks(localAudioChunks as any);
   };
   const stopRecording = () => {
     setRecordingStatus("inactive");
@@ -48,7 +48,7 @@ const AudioRecorder = () => {
       const audioBlob = new Blob(audioChunks, { type: mimeType });
       //creates a playable URL from the blob file.
       const audioUrl = URL.createObjectURL(audioBlob);
-      setAudio(audioUrl);
+      setAudio(audioUrl as any);
       setAudioChunks([]);
     };
   };
