@@ -10,6 +10,7 @@
     "vapid": "web-push generate-vapid-keys"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.7",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
