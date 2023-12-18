@@ -23,6 +23,7 @@ const AudioRecorder = () => {
       alert("The MediaRecorder API is not supported in your browser.");
     }
   };
+  const handlePermission = () => getMicrophonePermission();
   const startRecording = async () => {
     setRecordingStatus("recording");
     //create new Media recorder instance using the stream
@@ -58,7 +59,7 @@ const AudioRecorder = () => {
       <main>
         <div className="audio-controls">
           {!permission ? (
-            <button onClick={getMicrophonePermission} type="button">
+            <button onClick={handlePermission} type="button">
               Get Microphone
             </button>
           ) : null}
