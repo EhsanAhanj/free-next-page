@@ -1,43 +1,70 @@
 import AudioReactRecorder, {
   RecordState,
 } from "@/components/AudioReactRecorder2";
-// import SwipeSelect from "@/components/DatePicker";
-import { useState } from "react";
+import React from "react";
 
-const App = () => {
-  const [audioSrc, setAudioSrc] = useState();
-  const [recordState, setRecordState] = useState<any>(RecordState.NONE);
-  const start = () => {
-    setRecordState(RecordState.START);
+class App extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      recordState: null,
+      audioData: null,
+    };
+  }
+
+  start = () => {
+    this.setState({
+      recordState: RecordState.START,
+    });
   };
 
-  const stop = () => {
-    setRecordState(RecordState.STOP);
+  pause = () => {
+    this.setState({
+      recordState: RecordState.PAUSE,
+    });
   };
 
-  //audioData contains blob and blobUrl
-  const onStop = (audioData: any) => {
-    setAudioSrc(() => audioData.url);
-    console.log("audioData", audioData);
+  stop = () => {
+    this.setState({
+      recordState: RecordState.STOP,
+    });
   };
-  return (
-    <div>
+
+  onStop = (data: any) => {
+    this.setState({
+      audioData: data,
+    });
+    console.log("onStop: audio data", data);
+  };
+
+  render() {
+    const { recordState } = this.state;
+
+    return (
       <div>
         <AudioReactRecorder
           state={recordState}
-          onStop={onStop}
-          type="audio/ogg; codecs=opus"
+          onStop={this.onStop}
+          backgroundColor="rgb(255,255,255)"
         />
-
-        <button onClick={start}>Start</button>
-        <button onClick={stop}>Stop</button>
+        <audio
+          id="audio"
+          controls
+          src={this.state.audioData ? this.state.audioData.url : null}
+        ></audio>
+        <button id="record" onClick={this.start}>
+          Start
+        </button>
+        <button id="pause" onClick={this.pause}>
+          Pause
+        </button>
+        <button id="stop" onClick={this.stop}>
+          Stop
+        </button>
       </div>
-      <div className="w-[500px] h-[500px] bg-red-100 ">
-        {audioSrc && <audio className="" src={audioSrc} controls />}
-      </div>
-      {/* <SwipeSelect startDate={startDate} setStartDate={setStartDate} /> */}
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default App;
